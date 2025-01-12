@@ -12,8 +12,8 @@ This package only handles building and linking the LuaJIT library into a Zig app
 to import the native C API into their Zig application. If you're looking for a LuaJIT Zig API, refer to these
 other projects:
 
-- [zig-luajit](https://github.com/sackosoft/zig-luajit) - Zig language bindings LuaJIT.
-- [ziglua](https://github.com/natecraddock/ziglua) - Zig language bindings for LuaJIT, Lua 5.X, and Luau.
+- [sackosoft/zig-luajit](https://github.com/sackosoft/zig-luajit) - Zig language bindings LuaJIT.
+- [natecraddock/ziglua](https://github.com/natecraddock/ziglua) - Zig language bindings for LuaJIT, Lua 5.X, and Luau; maintained by Nathan Craddock.
 
 ## Zig Version
 
@@ -84,4 +84,12 @@ This package supports one configuration option, shown in the example above.
 - `link_as`: Controls how LuaJIT is linked
   - `.static`: Build and link LuaJIT as a static library (default).
   - `.dynamic`: Build and link LuaJIT as a shared library.
+
+## License
+
+Some files in this repository were copied or adapted from the [natecraddock/ziglua](https://github.com/natecraddock/ziglua) project.
+Any files copied or adapted from that project have a comment describing the attribution at the top. Such files are shared by Nathan
+Craddock under the MIT License in [ziglua/license](https://github.com/natecraddock/ziglua/blob/90dab7e72173709353dcaaa6d911bed7655c030d/license).
+
+All other files are released under the MIT License in [zig-luajit-build/LICENSE](./LICENSE).
 
