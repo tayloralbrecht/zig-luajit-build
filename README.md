@@ -68,6 +68,13 @@ In your Zig code, access the LuaJIT native bindings using the name of the import
 
 ```zig
 const c = @import("c");  // Access LuaJIT functions via 'c'
+
+pub fn main() !void {
+    const state: ?*c.lua_State = c.luaL_newstate();
+    if (state) |L| {
+        c.luaL_openlibs(L);
+    }
+}
 ```
 
 You can use a different import name if preferred:
