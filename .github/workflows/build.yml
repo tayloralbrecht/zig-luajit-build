@@ -3,6 +3,11 @@ name: Run Build
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - build/**
+      - include/**
+      - build.zig
+      - build.zig.zon
 
 jobs:
   test:
