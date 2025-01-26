@@ -1,0 +1,35 @@
+name: Run Build
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: ⬇️ Checkout
+      uses: actions/checkout@v4
+
+    - name: Get Date
+      id: date
+      run: echo "month=$(date +'%Y-%m')" >> $GITHUB_OUTPUT
+    
+    - name: 📦 Cache
+      uses: actions/cache@v3
+      id: cache-deps
+      with:
+        path: |
+          ~/zig
+        key: ${{ runner.os }}-deps-${{ steps.date.outputs.month }}
+
+    - name: (Z) Install Zig
+      if: steps.cache-deps.outputs.cache-hit != 'true'
+      uses: goto-bus-stop/setup-zig@v2
+      with:
+        version: master
+
+    - name: ▶️ Run tests
+      shell: bash
+      run: zig build
