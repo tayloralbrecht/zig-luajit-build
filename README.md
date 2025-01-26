@@ -1,20 +1,34 @@
+<div align="center">
+
 # luajit-build
 
-A Zig package that provides build integration for [LuaJIT][LUAJIT]. LuaJIT is a fork from the [Lua][LUA] project --
-"Lua is a powerful, efficient, lightweight, embeddable scripting language."
+Provides Zig `build.zig` integration for the [LuaJIT][LUAJIT]. Used to add the LuaJIT native C API to a Zig application.
+
+![Build Status Badge](https://img.shields.io/github/actions/workflow/status/sackosoft/zig-luajit-build/build.yml?label=build)
+![GitHub License](https://img.shields.io/github/license/sackosoft/zig-luajit-build)
+
+<!--
+TODO: Capture attention with a visualization, diagram, demo or other visual placeholder here.
+![Placeholder]()
+-->
+
+</div>
+
+LuaJIT is a fork from the [Lua][LUA] project -- "Lua is a powerful, efficient, lightweight, embeddable scripting language."
 
 [LUAJIT]: https://luajit.org/index.html
 [LUA]: https://www.lua.org/about.html
 
-## Looking for LuaJIT API Bindings?
+## Are you looking for a Zig interface to the LuaJIT C API?
 
-This package only handles building and linking the LuaJIT library into a Zig application. It enables developers
-to import **the native LuaJIT C API** into their Zig application. If you're looking for a Zig API to LuaJIT, refer
-to one of these other projects:
+This package does not contain Zig language bindings to the C API. This package only handles building and linking the
+LuaJIT library into a Zig application.
+
+If you're looking to run Lua on LuaJIT in your Zig application, you're probably looking for one of these projects:
 
 1. [sackosoft/zig-luajit](https://github.com/sackosoft/zig-luajit) **- Zig language bindings LuaJIT.**
-    - Built on top of `zig-luajit-build`, preferred for LuaJIT-only use cases.
-2. [natecraddock/ziglua](https://github.com/natecraddock/ziglua) - Zig language bindings for LuaJIT, Lua 5.X, and Luau
+    - Preferred solution when only one Lua runtime (LuaJIT) is required;  built on top of `zig-luajit-build`.
+2. [natecraddock/ziglua](https://github.com/natecraddock/ziglua) - Zig language bindings for Lua 5.x and Luau and LuaJIT.
     - More mature project, maintained by Nathan Craddock. Has some quirks as a result of supporting all Lua runtimes
       with the same Zig API.
 
