@@ -21,7 +21,7 @@ jobs:
       id: cache-deps
       with:
         path: |
-          ~/zig
+          /opt/hostedtoolcache/zig/master/x64
         key: ${{ runner.os }}-deps-${{ steps.date.outputs.month }}
 
     - name: (Z) Install Zig
