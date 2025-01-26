@@ -1,8 +1,8 @@
 <div align="center">
 
-# luajit-build
+# zig-luajit-build
 
-Provides `build.zig` integration for [LuaJIT][LUAJIT], giving access to the LuaJIT C API.
+Used to compile and link the native [LuaJIT][LUAJIT] C API into Zig ⚡ applications.
 
 ![Build Status Badge](https://img.shields.io/github/actions/workflow/status/sackosoft/zig-luajit-build/build.yml?label=build)
 ![GitHub License](https://img.shields.io/github/license/sackosoft/zig-luajit-build)
