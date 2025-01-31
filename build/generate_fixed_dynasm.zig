@@ -1,3 +1,10 @@
+//! The LuaJIT project has some expectations that Windows users build LuaJIT using the MSVC toolchain
+//! or rely on MinGW to get a Linux-like build on Windows. LuaJIT uses a `dynasm.lua` script to dynamically
+//! generate some content during build time, and those files include references to files with line numbers.
+//! The file references, in generated header files, include Windows paths -- which break when Zig attempts
+//! to compile them. As a result, this application "patches" the `dynasm.lua` script to produce Linux-flavored
+//! path separators, which Zig handles gracefully. As far as I can tell, windows paths are non-standard anyway.
+
 const std = @import("std");
 
 pub fn main() !void {
