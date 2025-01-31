@@ -149,7 +149,7 @@ pub fn configure(b: *Build, target: Build.ResolvedTarget, optimize: std.builtin.
 
     buildvm_ljvm.addArg("-o");
     if (target.result.os.tag == .windows) {
-        const ljvm_ob = buildvm_ljvm.addOutputFileArg("lj_vm. o");
+        const ljvm_ob = buildvm_ljvm.addOutputFileArg("lj_vm.o");
         lib.addObjectFile(ljvm_ob);
     } else {
         const ljvm_asm = buildvm_ljvm.addOutputFileArg("lj_vm.S");
