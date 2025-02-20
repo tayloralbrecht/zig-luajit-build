@@ -10,7 +10,7 @@ language bindings to LuaJIT, kindly refer to one of the following projects:
 
 ## Version
 
-Last tested with Zig version `0.14.0-dev.3197+1d8857bbe`
+Last tested with Zig version `0.14.0-dev.3267+59dc15fa0`
 
 ## Usage
 
