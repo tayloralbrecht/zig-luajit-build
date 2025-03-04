@@ -1,5 +1,6 @@
 .{
-    .name = "luajit-build",
+    .name = .luajit_build,
+    .fingerprint = 0x7f498d6f53e8581c,
     .version = "0.0.0",
     .dependencies = .{
         .upstream = .{
