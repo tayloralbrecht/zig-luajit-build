@@ -1,7 +1,7 @@
 .{
     .name = .luajit_build,
     .fingerprint = 0x7f498d6f53e8581c,
-    .version = "0.0.0",
+    .version = "1.0.2",
     .dependencies = .{
         .upstream = .{
             .url = "git+https://github.com/LuaJIT/LuaJIT#a4f56a459a588ae768801074b46ba0adcfb49eb1",
