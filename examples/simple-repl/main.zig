@@ -44,11 +44,12 @@ pub fn main() !void {
     }
 }
 
-const max = @alignOf(std.c.max_align_t);
+const max_alignment: std.mem.Alignment = std.mem.Alignment.of(std.c.max_align_t);
+const max_alignment_bytes: usize = std.mem.Alignment.toByteUnits(max_alignment);
 const NativeAllocator = struct {
-    fn alloc(ud: ?*anyopaque, ptr: ?*anyopaque, osize: usize, nsize: usize) callconv(.c) ?*align(max) anyopaque {
+    fn alloc(ud: ?*anyopaque, ptr: ?*anyopaque, osize: usize, nsize: usize) callconv(.c) ?*align(max_alignment_bytes) anyopaque {
         const allocator: *std.mem.Allocator = @ptrCast(@alignCast(ud.?));
-        const aligned_ptr = @as(?[*]align(max) u8, @ptrCast(@alignCast(ptr)));
+        const aligned_ptr = @as(?[*]align(max_alignment_bytes) u8, @ptrCast(@alignCast(ptr)));
         if (aligned_ptr) |p| {
             if (nsize != 0) {
                 const old_mem = p[0..osize];
@@ -59,7 +60,7 @@ const NativeAllocator = struct {
             return null;
         } else {
             // Malloc case
-            return (allocator.alignedAlloc(u8, max, nsize) catch return null).ptr;
+            return (allocator.alignedAlloc(u8, max_alignment, nsize) catch return null).ptr;
         }
     }
 };
