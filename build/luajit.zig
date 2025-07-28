@@ -30,7 +30,7 @@ pub fn configure(b: *Build, target: Build.ResolvedTarget, optimize: std.builtin.
         .optimize = .ReleaseSafe,
     });
     minilua.linkLibC();
-    minilua.root_module.sanitize_c = .off;
+    minilua.root_module.sanitize_c = false;
     minilua.addCSourceFile(.{ .file = upstream.path("src/host/minilua.c") });
 
     // Generate the buildvm_arch.h file using minilua
@@ -80,7 +80,7 @@ pub fn configure(b: *Build, target: Build.ResolvedTarget, optimize: std.builtin.
     const buildvm_target = blk: {
         if (target.result.cpu.arch != @import("builtin").target.cpu.arch) {
             var query = target.query;
-            query.abi = .default(target.result.cpu.arch, @import("builtin").os.tag);
+            query.abi = .default(target.result.cpu.arch, @import("builtin").os);
             break :blk b.resolveTargetQuery(query);
         }
         break :blk target;
@@ -93,7 +93,7 @@ pub fn configure(b: *Build, target: Build.ResolvedTarget, optimize: std.builtin.
         .optimize = .ReleaseSafe,
     });
     buildvm.linkLibC();
-    buildvm.root_module.sanitize_c = .off;
+    buildvm.root_module.sanitize_c = false;
 
     // Needs to run after the buildvm_arch.h and luajit.h files are generated
     buildvm.step.dependOn(&dynasm_run.step);
@@ -201,7 +201,7 @@ pub fn configure(b: *Build, target: Build.ResolvedTarget, optimize: std.builtin.
         .files = &luajit_vm,
     });
 
-    lib.root_module.sanitize_c = .off;
+    lib.root_module.sanitize_c = false;
 
     lib.installHeader(upstream.path("src/lua.h"), "lua.h");
     lib.installHeader(upstream.path("src/lualib.h"), "lualib.h");
